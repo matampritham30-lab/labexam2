@@ -1,0 +1,34 @@
+CHANAKYA UNIVERSITY — LABORATORY EXAMINATION 2
+PROJECT: INDEX GENERATION
+
+Design explanation
+
+1. Aim
+The program reads a text file and creates a lexicographically sorted index. Each word is printed once, followed by the line numbers where it occurs. It compares a Trie, a Binary Search Tree (BST), and a Python dictionary.
+
+2. Input and word separation
+The program accepts two command-line arguments: the input text filename and the output index filename. Words are separated only by spaces, tabs, line breaks, full stops, commas, colons, and semicolons. Other characters remain part of a word. The program is case-sensitive.
+
+3. Line-number linked list
+Each complete word stores a linked list of line numbers. The input is scanned from top to bottom. The Lines.add method avoids adding the same line number twice in succession, so a repeated word on one line appears only once for that line.
+
+4. Trie
+Each TrieNode stores a dictionary of character children. Insertion follows one character at a time. The terminal node for a complete word stores its line list. Searching follows the characters of the requested word. Printing uses an iterative depth-first traversal and reverse-push order to print words in ascending character order.
+
+5. Binary Search Tree
+Each BSTNode stores a word, its line list, and left/right child pointers. Smaller words go to the left and larger words go to the right. Search follows the comparison result. Iterative in-order traversal prints the words in sorted order.
+
+6. Python dictionary
+The dictionary maps each word to its Lines linked list. Searching uses dict.get. Since dictionary keys are not inherently printed in lexicographic order, printing sorts the keys first.
+
+7. Performance evaluation
+Construction, search, and printing times are measured separately using time.perf_counter. The benchmark uses 100,000 randomly selected word queries (with replacement, so exactly 100,000 queries can be made for every dataset). The all-dataset script creates a CSV file and three graphs comparing the data structures over six datasets.
+
+8. Limitations
+The simple unbalanced BST can become slow for unfavourable insertion orders. Large datasets consume substantial memory because the program keeps (word, line-number) pairs in memory and stores three indexes during the benchmarking process one at a time. Timings vary by computer and should be reported from the machine used for the lab.
+
+How to run
+1. Install Matplotlib: python -m pip install matplotlib
+2. Generate test datasets: python generate_datasets.py
+3. Benchmark all six datasets: python benchmark_all.py
+4. For a single input file: python index.py input.txt output.txt

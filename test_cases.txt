@@ -1,0 +1,66 @@
+TEST CASES — INDEX GENERATION
+
+Run single-file tests with:
+python index.py test_input.txt test_output.txt
+
+Test 1 — repeated word on same line
+Input:
+apple apple banana
+Expected:
+APPLE appears once in the index and its line list contains 1 only once.
+BANANA appears with line 1.
+
+Test 2 — same word on different lines
+Input:
+apple
+banana apple
+Expected:
+apple has line numbers 1 and 2.
+banana has line number 2.
+
+Test 3 — separators
+Input:
+red,blue;green.yellow:purple
+Expected words:
+red, blue, green, yellow, purple
+
+Test 4 — punctuation that is not a separator
+Input:
+can't a-b x/y hello! (word)
+Expected words:
+can't, a-b, x/y, hello!, (word)
+These punctuation characters remain part of the word.
+
+Test 5 — lexicographic output
+Input:
+zebra apple mango Apple
+Expected:
+The printed words are in Python/ASCII-compatible ascending order for printable ASCII. Uppercase and lowercase are different words; uppercase letters sort before lowercase letters.
+
+Test 6 — empty file
+Expected:
+The program creates an output file with empty index sections and produces a graph without crashing.
+
+Test 7 — missing command-line arguments
+Run:
+python index.py
+Expected:
+Usage: python index.py input.txt output.txt
+
+Test 8 — missing input file
+Run:
+python index.py does_not_exist.txt output.txt
+Expected:
+A readable error message beginning with "Could not read input file:" and a non-zero exit status.
+
+Test 9 — dataset generator
+Run:
+python generate_datasets.py
+Expected:
+Six files in datasets/; each has 1,100,000 word occurrences and the distinct-word count shown by its filename in the generator's configuration.
+
+Test 10 — complete benchmark
+Run:
+python benchmark_all.py
+Expected:
+outputs/benchmark_results.csv, one index output per dataset, and construction.png, search.png, printing.png.

@@ -1,0 +1,30 @@
+TRIE INDEX
+(word)	3 
+a-b	3 
+apple	1 2 
+banana	2 
+can't	3 
+hello!	3 
+x/y	3 
+zebra	1 
+
+BST INDEX
+(word)	3 
+a-b	3 
+apple	1 2 
+banana	2 
+can't	3 
+hello!	3 
+x/y	3 
+zebra	1 
+
+DICTIONARY INDEX
+(word)	3 
+a-b	3 
+apple	1 2 
+banana	2 
+can't	3 
+hello!	3 
+x/y	3 
+zebra	1 
+
